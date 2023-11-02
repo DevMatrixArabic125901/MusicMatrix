@@ -17,18 +17,18 @@ from pyrogram import filters
 load_dotenv()
 
 # Get it from my.telegram.org
-API_ID = int(getenv("API_ID", "17211426"))
-API_HASH = getenv("API_HASH", "656a097533402eb717ba82298a752177")
+API_ID = int(getenv("API_ID", ""))
+API_HASH = getenv("API_HASH")
 
 ## Get it from @Botfather in Telegram.
-BOT_TOKEN = getenv("BOT_TOKEN", "6964653070:AAH1Lxhj3hhfHT1JQ0yTY_-YhkxI_7d1YDg")
+BOT_TOKEN = getenv("BOT_TOKEN")
 
 # Database to save your chats and stats... Get MongoDB:-  https://telegra.ph/How-To-get-Mongodb-URI-04-06
-MONGO_DB_URI = getenv("MONGO_DB_URI", "mongodb+srv://kontol:kontol@cluster0.rg9ig.mongodb.net/test?myFirstDatabase?retryWrites=true&w=majority")
+MONGO_DB_URI = getenv("MONGO_DB_URI", None)
 
 # Custom max audio(music) duration for voice chat. set DURATION_LIMIT in variables with your own time(mins), Default to 60 mins.
 DURATION_LIMIT_MIN = int(
-    getenv("DURATION_LIMIT", "800000")
+    getenv("DURATION_LIMIT", "60")
 )  # Remember to give value in Minutes
 
 # Duration Limit for downloading Songs in MP3 or MP4 format from bot
@@ -37,14 +37,14 @@ SONG_DOWNLOAD_DURATION = int(
 )  # Remember to give value in Minutes
 
 # You'll need a Private Group ID for this.
-LOG_GROUP_ID = int(getenv("LOG_GROUP_ID", "-1001708765292"))
+LOG_GROUP_ID = int(getenv("LOG_GROUP_ID", ""))
 
 # A name for your Music bot.
-MUSIC_BOT_NAME = getenv("MUSIC_BOT_NAME", "𝖬𝖺𝖳𝗋𝗂x 𝖬𝗎𝗌𝗂𝖼")
+MUSIC_BOT_NAME = getenv("MUSIC_BOT_NAME")
 
 # Your User ID.
 OWNER_ID = list(
-    map(int, getenv("OWNER_ID", "6373798952").split())
+    map(int, getenv("OWNER_ID", "").split())
 )  # Input type must be interger
 
 # Get it from http://dashboard.heroku.com/account
@@ -64,21 +64,12 @@ UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "master")
 GIT_TOKEN = getenv("GIT_TOKEN", None)
 
 # Only  Links formats are  accepted for this Var value.
-CHANNEL_SUDO = getenv(
-    "CHANNEL_SUDO", "XMATTMX"
-)  # معرف قناتك بدون @
-YAFA_NAME = getenv(
-    "YAFA_NAME", "𝖬𝖺𝖳𝗋𝗂x 𝖳𝖾𝖠𝗆"
-)  # اسم قناتك
-YAFA_CHANNEL = getenv(
-   " YAFA_CHANNEL", "https://t.me/XMATTMX"
-)  # رابط قناتك
 SUPPORT_CHANNEL = getenv(
     "SUPPORT_CHANNEL", None
-)  # رابط قناتك
+)  # Example:- https://t.me/TheYukki
 SUPPORT_GROUP = getenv(
     "SUPPORT_GROUP", None
-)  # رابط كروبك
+)  # Example:- https://t.me/YukkiSupport
 
 # Set it in True if you want to leave your assistant after a certain amount of time. [Set time via AUTO_LEAVE_ASSISTANT_TIME]
 AUTO_LEAVING_ASSISTANT = getenv("AUTO_LEAVING_ASSISTANT", None)
@@ -142,22 +133,25 @@ TG_VIDEO_FILESIZE_LIMIT = int(
 
 # Chceckout https://www.gbmb.org/mb-to-bytes  for converting mb to bytes
 
+# If you want your bot to setup the commands automatically in the bot's menu set it to true.
+# Refer to https://i.postimg.cc/Bbg3LQTG/image.png
+SET_CMDS = getenv("SET_CMDS", False)
 
 # You'll need a Pyrogram String Session for these vars. Generate String from our session generator bot @YukkiStringBot
-STRING1 = getenv("STRING_SESSION", "BACPiUe515K8La3fD7WV9RR_aaV5ox1Cpu9f4NajidQbt35CV9uJg6-pfUiHI8vHMCiUU3KfLEei1L54kL8UmQBHNsCeNSL41bNUB5wU9LKM6qB-HtTXADXuh6SYQIHPZPu85E4L3oEuwmP9fAZxQPwH7NGoQFctA47VcRgnAVf5wvDuNkNeLheS7vekHpfJgF8kk6Nk86PcYeSwM-Qk4SWZ3rXZ7x9oC2817VB0MExXm04qfYf0jSBOZnPOMfYSBItXvUtc_TP4SzqeHryAUx3bfm8I5i8npW1gmAUglumV-HNfInW7NEPhqqji0YPtgIiyiiVc4JeIkPh9h09vjsp6AAAAAZZ1J4AA")
+STRING1 = getenv("STRING_SESSION", None)
 STRING2 = getenv("STRING_SESSION2", None)
 STRING3 = getenv("STRING_SESSION3", None)
 STRING4 = getenv("STRING_SESSION4", None)
 STRING5 = getenv("STRING_SESSION5", None)
 
 
-#  __     ___    _ _  ___  _______   __  __ _    _  _____ _____ _____   ____   ____ _______
-#  \ \   / / |  | | |/ / |/ /_   _| |  \/  | |  | |/ ____|_   _/ ____| |  _ \ / __ \__   __|
-#   \ \_/ /| |  | | ' /| ' /  | |   | \  / | |  | | (___   | || |      | |_) | |  | | | |
-#    \   / | |  | |  < |  <   | |   | |\/| | |  | |\___ \  | || |      |  _ <| |  | | | |
-#     | |  | |__| | . \| . \ _| |_  | |  | | |__| |____) |_| || |____  | |_) | |__| | | |
-#     |_|   \____/|_|\_\_|\_\_____| |_|  |_|\____/|_____/|_____\_____| |____/ \____/  |_|
-
+#     #        #######                    #     #         #####     #####     ######         ####### 
+##   ##   ##      #    #####  # #    #    ##   ## #    # #     # # #     #    #     #  ####     #    
+# # # #  #  #     #    #    # #  #  #     # # # # #    # #       # #          #     # #    #    #    
+#  #  # #    #    #    #    # #   ##      #  #  # #    #  #####  # #          ######  #    #    #    
+#     # ######    #    #####  #   ##      #     # #    #       # # #          #     # #    #    #    
+#     # #    #    #    #   #  #  #  #     #     # #    # #     # # #     #    #     # #    #    #    
+#     # #    #    #    #    # # #    #    #     #  ####   #####  #  #####     ######   ####     #    
 
 ### DONT TOUCH or EDIT codes after this line
 BANNED_USERS = filters.user()
@@ -174,7 +168,7 @@ autoclean = []
 
 
 # Images
-START_IMG_URL = getenv("START_IMG_URL", "https://telegra.ph/file/89e6c33b5683b00046fe4.jpg")
+START_IMG_URL = getenv("START_IMG_URL", None)
 
 PING_IMG_URL = getenv(
     "PING_IMG_URL",
