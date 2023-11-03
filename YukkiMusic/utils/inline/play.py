@@ -8,7 +8,6 @@
 # All rights reserved.
 
 import random
-from config import YAFA_NAME
 from pyrogram.types import InlineKeyboardButton
 
 selections = [
