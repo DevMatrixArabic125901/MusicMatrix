@@ -1,12 +1,13 @@
 #
-# Copyright (C) 2021-2022 by TeamYukki@Github, < https://github.com/TeamYukki >.
+# Copyright (C) 2021-present by TeamYukki@Github, < https://github.com/TeamYukki >.
 #
 # This file is part of < https://github.com/TeamYukki/YukkiMusicBot > project,
 # and is released under the "GNU v3.0 License Agreement".
 # Please see < https://github.com/TeamYukki/YukkiMusicBot/blob/master/LICENSE >
 #
 # All rights reserved.
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+#
+
 import random
 import string
 from ast import ExceptHandler
@@ -17,60 +18,31 @@ from pyrogram.types import (InlineKeyboardMarkup, InputMediaPhoto,
 from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
+from config import BANNED_USERS, lyrical
 from strings import get_command
-from strings.filters import command
-from YukkiMusic import (Apple, Resso, SoundCloud, Spotify, Telegram,
+from SedthonMusic import (Apple, Resso, SoundCloud, Spotify, Telegram,
                         YouTube, app)
-from YukkiMusic.core.call import Yukki
-from YukkiMusic.utils import seconds_to_min, time_to_seconds
-from YukkiMusic.utils.channelplay import get_channeplayCB
-from YukkiMusic.utils.database import is_video_allowed
-from YukkiMusic.utils.decorators.language import languageCB
-from YukkiMusic.utils.decorators.play import PlayWrapper
-from YukkiMusic.utils.formatters import formats
-from YukkiMusic.utils.inline.play import (livestream_markup,
+from SedthonMusic.core.call import Yukki
+from SedthonMusic.utils import seconds_to_min, time_to_seconds
+from SedthonMusic.utils.channelplay import get_channeplayCB
+from SedthonMusic.utils.database import is_video_allowed
+from SedthonMusic.utils.decorators.language import languageCB
+from SedthonMusic.utils.decorators.play import PlayWrapper
+from SedthonMusic.utils.formatters import formats
+from SedthonMusic.utils.inline.play import (livestream_markup,
                                           playlist_markup,
                                           slider_markup, track_markup)
-from YukkiMusic.utils.inline.playlist import botplaylist_markup
-from YukkiMusic.utils.logger import play_logs
-from YukkiMusic.utils.stream.stream import stream
+from SedthonMusic.utils.inline.playlist import botplaylist_markup
+from SedthonMusic.utils.logger import play_logs
+from SedthonMusic.utils.stream.stream import stream
 
-
-force_btn = InlineKeyboardMarkup(
-    [
-        [
-            InlineKeyboardButton(   
-              text=f"{YAFA_NAME}", url=f"{YAFA_CHANNEL}",)
-        ],
-        [
-            InlineKeyboardButton(
-              text="• السورس •", url="https://t.me/XMATTMX",),                        
-        ],        
-    ]
-)
-async def check_is_joined(message):    
-    try:
-        userid = message.from_user.id
-        status = await app.get_chat_member(f"{CHANNEL_SUDO}", userid)
-        return True
-    except Exception:
-        await message.reply_text("**⚠️︙عذراً، عليك الانضمام الى القناة أولاً :**",reply_markup=force_btn,parse_mode="markdown",disable_web_page_preview=False)
-        return False
-      
 # Command
 PLAY_COMMAND = get_command("PLAY_COMMAND")
 
 
 @app.on_message(
-    command(["شغل","تشغيل"])
-    & filters.group
-    & ~filters.edited
-    & ~BANNED_USERS
-)
-@app.on_message(
     filters.command(PLAY_COMMAND)
     & filters.group
-    & ~filters.edited
     & ~BANNED_USERS
 )
 @PlayWrapper
@@ -85,8 +57,6 @@ async def play_commnd(
     url,
     fplay,
 ):
-    if not await check_is_joined(message):
-        return
     mystic = await message.reply_text(
         _["play_2"].format(channel) if channel else _["play_1"]
     )
@@ -796,4 +766,4 @@ async def slider_queries(client, CallbackQuery, _):
         )
         return await CallbackQuery.edit_message_media(
             media=med, reply_markup=InlineKeyboardMarkup(buttons)
-        )
+)
