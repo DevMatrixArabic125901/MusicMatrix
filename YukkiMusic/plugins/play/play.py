@@ -34,7 +34,7 @@ from YukkiMusic.utils.inline.play import (livestream_markup,
                                           slider_markup, track_markup)
 from YukkiMusic.utils.inline.playlist import botplaylist_markup
 from YukkiMusic.utils.logger import play_logs
-from YukkiMusic import stream
+from YukkiMusic.utils.stream.stream import stream
 
 # Command
 PLAY_COMMAND = get_command("PLAY_COMMAND")
