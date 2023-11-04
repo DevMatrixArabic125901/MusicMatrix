@@ -17,7 +17,6 @@ from pyrogram.types import (InlineKeyboardMarkup, InputMediaPhoto,
 from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
-from config import (BANNED_USERS, lyrical, CHANNEL_SUDO)
 from strings import get_command
 from strings.filters import command
 from YukkiMusic import (Apple, Resso, SoundCloud, Spotify, Telegram,
@@ -45,7 +44,7 @@ force_btn = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton(
-              text="• تحديثات السورس •", url="https://t.me/Tws_Tepthon",),                        
+              text="• السورس •", url="https://t.me/XMATTMX",),                        
         ],        
     ]
 )
