@@ -20,21 +20,21 @@ from pytgcalls.exceptions import NoActiveGroupCall
 import config
 from config import BANNED_USERS, lyrical
 from strings import get_command
-from SedthonMusic import (Apple, Resso, SoundCloud, Spotify, Telegram,
+from YukkiMusic import (Apple, Resso, SoundCloud, Spotify, Telegram,
                         YouTube, app)
-from SedthonMusic.core.call import Yukki
-from SedthonMusic.utils import seconds_to_min, time_to_seconds
-from SedthonMusic.utils.channelplay import get_channeplayCB
-from SedthonMusic.utils.database import is_video_allowed
-from SedthonMusic.utils.decorators.language import languageCB
-from SedthonMusic.utils.decorators.play import PlayWrapper
-from SedthonMusic.utils.formatters import formats
-from SedthonMusic.utils.inline.play import (livestream_markup,
+from YukkiMusic.core.call import Yukki
+from YukkiMusic.utils import seconds_to_min, time_to_seconds
+from YukkiMusic.utils.channelplay import get_channeplayCB
+from YukkiMusic.utils.database import is_video_allowed
+from YukkiMusic.utils.decorators.language import languageCB
+from YukkiMusic.utils.decorators.play import PlayWrapper
+from YukkiMusic.utils.formatters import formats
+from YukkiMusic.utils.inline.play import (livestream_markup,
                                           playlist_markup,
                                           slider_markup, track_markup)
-from SedthonMusic.utils.inline.playlist import botplaylist_markup
-from SedthonMusic.utils.logger import play_logs
-from SedthonMusic.utils.stream.stream import stream
+from YukkiMusic.utils.inline.playlist import botplaylist_markup
+from YukkiMusic.utils.logger import play_logs
+from YukkiMusic import stream
 
 # Command
 PLAY_COMMAND = get_command("PLAY_COMMAND")
